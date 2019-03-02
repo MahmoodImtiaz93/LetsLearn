@@ -1,5 +1,6 @@
 package com.mahmoodimtiaz.letslearn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     ImageView logo;
     EditText mLoginMail,mloginPass;
-    Button b1;
+    Button b1,b2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +28,12 @@ public class MainActivity extends AppCompatActivity {
         mloginPass= (EditText) findViewById(R.id.logingPassID);
 
         b1= (Button) findViewById(R.id.loginbutton);
+        b2= (Button) findViewById(R.id.createnewacc);
 
 
         //Animation
 
         updateAlpha(logo);
-
-
         mLoginMail.setAlpha(0);
         mloginPass.setAlpha(0);
         b1.setAlpha(0);
@@ -45,10 +45,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         logo.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(300).start();
+
         mLoginMail.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(600).start();
         mloginPass.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(900).start();
         b1.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(900).start();
 
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SignUp.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     void updateAlpha(View v)
