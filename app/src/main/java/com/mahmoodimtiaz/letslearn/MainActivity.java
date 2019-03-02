@@ -9,20 +9,50 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button mbutton;
+    ImageView logo;
+    EditText mLoginMail,mloginPass;
+    Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mbutton = findViewById(R.id.button4);
+        logo = (ImageView) findViewById(R.id.logo);
+        mLoginMail= (EditText) findViewById(R.id.loginEmailD);
+        mloginPass= (EditText) findViewById(R.id.logingPassID);
+
+        b1= (Button) findViewById(R.id.loginbutton);
 
 
+        //Animation
+
+        updateAlpha(logo);
+
+
+        mLoginMail.setAlpha(0);
+        mloginPass.setAlpha(0);
+        b1.setAlpha(0);
+
+        logo.setTranslationY(200);
+        mLoginMail.setTranslationY(200);
+        mloginPass.setTranslationY(200);
+        b1.setTranslationY(100);
+
+
+        logo.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(300).start();
+        mLoginMail.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(600).start();
+        mloginPass.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(900).start();
+        b1.animate().alpha(1).translationY(0).setDuration(800).setStartDelay(900).start();
 
     }
 
-
+    void updateAlpha(View v)
+    {
+        v.setAlpha(0);
+    }
 }
